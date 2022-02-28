@@ -9,7 +9,7 @@ namespace ApiGatewayService.Repositories
 
         public UserRepository()
         {
-            _client.BaseAddress = new Uri("https://localhost:49163/v1/");
+            _client.BaseAddress = new Uri("https://localhost:44372/v1/");
         }
 
         public async Task<int> InsertUser(User user)

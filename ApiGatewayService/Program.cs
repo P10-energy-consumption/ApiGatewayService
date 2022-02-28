@@ -15,6 +15,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IConnectionFactory, ConnectionFactory>();
 builder.Services.AddScoped<IPetRepository, PetRepository>();
 builder.Services.AddScoped<IStoreRepository, StoreRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+
 
 var app = builder.Build();
 
