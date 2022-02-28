@@ -13,7 +13,7 @@ namespace ApiGatewayService.Repositories
 
         public StoreRepository()
         {
-            _client.BaseAddress = new Uri("https://localhost:49161/v1/");
+            _client.BaseAddress = new Uri("https://localhost:44371/v1/");
         }
 
         public async Task<List<InventoryLine>> GetInventory()
