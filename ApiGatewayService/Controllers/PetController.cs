@@ -22,7 +22,7 @@ namespace ApiGatewayService.Controllers
             return Ok(result);
         }
 
-        [HttpPost("/v1/pet/{petId}")]
+        [HttpPut("/v1/pet/{petId}")]
         public async Task<IActionResult> UpdatePet(Pet pet)
         {
             var result = await _petRepository.UpdatePet(pet);
