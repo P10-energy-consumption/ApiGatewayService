@@ -22,10 +22,11 @@ namespace ApiGatewayService.Controllers
             return Ok(result);
         }
 
-        [HttpPut("/v1/pet/{petId}")]
-        public async Task<IActionResult> UpdatePet(Pet pet)
+        [HttpPut("/v1/pet")]
+        public async Task<IActionResult> UpdatePet([FromBody] Pet pet)
         {
-            var result = await _petRepository.UpdatePet(pet);
+            await _petRepository.UpdatePet(pet);
+            var result = await _petRepository.GetPet(pet.ID);
             return Ok(result);
         }
 
@@ -37,14 +38,14 @@ namespace ApiGatewayService.Controllers
         }
 
         [HttpDelete("/v1/pet/{petId}")]
-        public async Task<IActionResult> DeletePet([FromQuery] int petId)
+        public async Task<IActionResult> DeletePet(int petId)
         {
             var result = await _petRepository.DeletePet(petId);
             return Ok(result);
         }
 
         [HttpGet("/v1/pet/{petId}")]
-        public async Task<IActionResult> GetPet([FromQuery] int petId)
+        public async Task<IActionResult> GetPet(int petId)
         {
             var result = await _petRepository.GetPet(petId);
             return Ok(result);

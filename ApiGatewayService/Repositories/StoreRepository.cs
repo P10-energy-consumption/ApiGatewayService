@@ -16,6 +16,13 @@ namespace ApiGatewayService.Repositories
             _client.BaseAddress = new Uri("https://localhost:44371/v1/");
         }
 
+        public async Task<int> DeleteOrder(int orderId)
+        {
+            var response = await _client.DeleteAsync($"store/order/{orderId}");
+            var data = await response.Content.ReadAsAsync<int>();
+            return data;
+        }
+
         public async Task<List<InventoryLine>> GetInventory()
         {
             var response = await _client.GetFromJsonAsync<List<InventoryLine>>("store/inventory");
@@ -28,5 +35,11 @@ namespace ApiGatewayService.Repositories
             return response;
         }
 
+        public async Task<Order> PostOrder(Order order)
+        {
+            var response = await _client.PostAsJsonAsync("store/order", order);
+            var data = await response.Content.ReadAsAsync<Order>();
+            return data;
+        }
     }
 }

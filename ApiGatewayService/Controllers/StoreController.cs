@@ -1,4 +1,5 @@
-﻿using ApiGatewayService.Repositories.Interfaces;
+﻿using ApiGatewayService.Models;
+using ApiGatewayService.Repositories.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ApiGatewayService.Controllers
@@ -24,6 +25,25 @@ namespace ApiGatewayService.Controllers
         public async Task<IActionResult> GetOrders(int orderId)
         {
             var result = await _storeRepository.GetOrders(orderId);
+            return Ok(result);
+        }
+
+        [HttpPost("/v1/store/order")]
+        public async Task<ActionResult> Place([FromBody] Order order)
+        {
+            if (order != null)
+            {
+                var result = await _storeRepository.PostOrder(order);
+
+                return Ok(result);
+            }
+            return StatusCode(400);
+        }
+
+        [HttpDelete("/v1/store/order/{orderId}")]
+        public async Task<ActionResult> Delete(int orderId)
+        {
+            var result = await _storeRepository.DeleteOrder(orderId);
             return Ok(result);
         }
     }

@@ -39,7 +39,7 @@ namespace ApiGatewayService.Repositories
 
         public async Task<int> UpdatePet(Pet pet)
         {
-            var response = await _client.PutAsJsonAsync($"pet/{pet.ID}/uploadImage", pet);
+            var response = await _client.PutAsJsonAsync($"pet", pet);
             var data = await response.Content.ReadAsAsync<int>();
             return data;
         }
