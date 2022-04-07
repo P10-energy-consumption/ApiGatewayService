@@ -8,16 +8,16 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["monolithic-service/monolithic-service.csproj", "monolithic-service/"]
-RUN dotnet restore "monolithic-service/monolithic-service.csproj"
+COPY ["ApiGatewayService/ApiGatewayService.csproj", "ApiGatewayService/"]
+RUN dotnet restore "ApiGatewayService/ApiGatewayService.csproj"
 COPY . .
-WORKDIR "/src/monolithic-service"
-RUN dotnet build "monolithic-service.csproj" -c Release -o /app/build
+WORKDIR "/src/ApiGatewayService"
+RUN dotnet build "ApiGatewayService.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "monolithic-service.csproj" -c Release -o /app/publish
+RUN dotnet publish "ApiGatewayService.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "monolithic-service.dll"]
+ENTRYPOINT ["dotnet", "ApiGatewayService.dll"]
