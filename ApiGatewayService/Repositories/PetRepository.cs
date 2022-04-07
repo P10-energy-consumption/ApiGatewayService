@@ -13,7 +13,7 @@ namespace ApiGatewayService.Repositories
 
         public PetRepository()
         {
-            _client.BaseAddress = new Uri("https://localhost:44373/v1/");
+            _client.BaseAddress = new Uri("https://host.docker.internal:8081/v1/");
         }
 
         public async Task<int> InsertPet(Pet pet)

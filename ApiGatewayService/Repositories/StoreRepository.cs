@@ -13,7 +13,7 @@ namespace ApiGatewayService.Repositories
 
         public StoreRepository()
         {
-            _client.BaseAddress = new Uri("https://localhost:44371/v1/");
+            _client.BaseAddress = new Uri("https://host.docker.internal:8083/v1/");
         }
 
         public async Task<int> DeleteOrder(int orderId)
