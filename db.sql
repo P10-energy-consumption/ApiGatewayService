@@ -1,6 +1,7 @@
 create schema if not exists pets authorization postgres;
 
 ALTER SYSTEM SET max_connections TO '500';
+ALTER SYSTEM SET shared_buffers TO '1280MB'
 
 drop table if exists pets.pet;
 
