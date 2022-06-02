@@ -16,7 +16,7 @@ namespace ApiGatewayService.Repositories
         public StoreRepository(HttpClient httpClient)
         {
             _client = httpClient;
-            _client.BaseAddress = new Uri("http://host.docker.internal:8083/v1/");
+            _client.BaseAddress = new Uri("http://petstore-store:8083/v1/");
         }
 
         public async Task<int> DeleteOrder(int orderId)

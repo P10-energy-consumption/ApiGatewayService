@@ -13,7 +13,7 @@ namespace ApiGatewayService.Repositories
         public UserRepository(HttpClient httpClient)
         {
             _client = httpClient;
-            _client.BaseAddress = new Uri("http://host.docker.internal:8082/v1/");
+            _client.BaseAddress = new Uri("http://petstore-user:8082/v1/");
         }
 
         public async Task<int> InsertUser(User user)

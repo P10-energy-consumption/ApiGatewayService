@@ -16,7 +16,7 @@ namespace ApiGatewayService.Repositories
         public PetRepository(HttpClient httpClient)
         {
             _client = httpClient;
-            _client.BaseAddress = new Uri("http://host.docker.internal:8081/v1/");
+            _client.BaseAddress = new Uri("http://petstore-pet:8081/v1/");
         }
 
         public async Task<int> InsertPet(Pet pet)
